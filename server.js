@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const hbs = require('hbs')
 const fs = require('fs')
+const port = process.env.PORT || 8080;
+
 app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname+'/views/partials')
 
@@ -13,10 +15,10 @@ hbs.registerHelper('biggy',(data)=>{
 })
 
 app.use((req,res,next)=>{
-  res.render('maintainance.hbs',{
-    maintaince_data:'Under maintaince',
-    data:'please visit after some minutes'
-  })
+  // res.render('maintainance.hbs',{
+  //   maintaince_data:'Under maintaince',
+  //   data:'please visit after some minutes'
+  // })
   console.log(`request method : ${req.method} requeest url : ${req.url} date : ${new Date().toString()} \n`);
   fs.appendFile('log.txt',`request method : ${req.method} requeest url : ${req.url} date : ${new Date().toString()} \n`,
   (err)=>{
@@ -56,6 +58,6 @@ app.get('/about',(req,res)=>{
 })
 
 
-app.listen(8080,()=>{
-  console.log('server running on 8080');
+app.listen(port,()=>{
+  console.log(`server running on ${port}`);
 })
