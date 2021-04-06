@@ -13,10 +13,10 @@ hbs.registerHelper('biggy',(data)=>{
 })
 
 app.use((req,res,next)=>{
-  // res.render('maintainance.hbs',{
-  //   maintaince_data:'Under maintaince',
-  //   data:'please visit after some minutes'
-  // })
+  res.render('maintainance.hbs',{
+    maintaince_data:'Under maintaince',
+    data:'please visit after some minutes'
+  })
   console.log(`request method : ${req.method} requeest url : ${req.url} date : ${new Date().toString()} \n`);
   fs.appendFile('log.txt',`request method : ${req.method} requeest url : ${req.url} date : ${new Date().toString()} \n`,
   (err)=>{
