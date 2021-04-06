@@ -35,7 +35,10 @@ app.use((req,res,next)=>{
 app.use(express.static(__dirname + '/public'))
 
 app.get('/',(req,res)=>{
-  res.send('test')
+  res.render('main.hbs',{
+    main:'MAIN page',
+    data:'welcome to main module'
+  })
 });
 
 app.get('/balu',(req,res)=>{
